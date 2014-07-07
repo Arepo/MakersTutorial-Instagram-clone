@@ -1,0 +1,17 @@
+<% if @posts.any? %>
+	<ul>
+		<% @posts.each do |post| %>
+			<li> 
+				<%= post.title %>
+				<%= post.description %>
+				<%= image_tag post.picture.url, class: 'uploaded-pic' %>
+			</li>
+		<% end %>
+	</ul>
+<% else %>
+	No posts
+<% end %>
+
+
+
+<%= link_to "Create post", new_post_path %>
