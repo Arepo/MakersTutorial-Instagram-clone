@@ -2,9 +2,12 @@
 	<ul>
 		<% @posts.each do |post| %>
 			<li> 
-				<%= post.title %>
+				<h3><%= post.title %></h3>
 				<%= post.description %>
-				<%= image_tag post.picture.url, class: 'uploaded-pic' %>
+				Posted by <%= post.user.email %>
+				<% if post.picture.present? %>
+					<%= image_tag post.picture.url, class: 'uploaded-pic' %>
+				<% end %>
 			</li>
 		<% end %>
 	</ul>
