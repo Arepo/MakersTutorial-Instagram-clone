@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
+gem 'aws-sdk'
+
 gem 'paperclip', github: 'thoughtbot/paperclip'
 
 gem 'devise'
+
+gem 'byebug'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.2'
