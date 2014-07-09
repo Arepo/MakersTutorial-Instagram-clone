@@ -41,9 +41,26 @@ describe 'posts' do
 			expect(page).not_to have_css 'img.uploaded-pic'
 		end
 
+		it 'allows you to include a photo with your post' do
+			visit "/posts/new"
+			visit "/posts/new"
+			fill_in "Title", with: "sexy"
+			fill_in "Description", with: "too sexy for my shirt"
+			attach_file 'Picture', Rails.root.join('spec/images/Junyuan and Sasha.jpg')
+			click_button "Post"
+			expect(page).to have_css 'img.uploaded-pic'
+		end
+
 	end
 
-	context do
+	context "when logged out" do
+
+		it "will not create new posts" do
+			visit '/posts'
+			click_link "Create post"
+			expect(page).to have_content 'Sign in'
+			expect(page).not_to have_field 'Description'
+		end
 
 	end
 end
