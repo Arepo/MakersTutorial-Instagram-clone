@@ -33,7 +33,7 @@ describe Post do
 			it 'reuses tags if they already exist' do
 				post.tag_names = 'ponies'
 				expect(Tag.count).to eq 1
-				expect(post.tags.length).to eq 1 
+				expect{ post.save! }.not_to raise_error
 			end
 		end
 	end

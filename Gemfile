@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'bootstrap-sass'
+
 gem 'aws-sdk'
 
 gem 'paperclip', github: 'thoughtbot/paperclip'

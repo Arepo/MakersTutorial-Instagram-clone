@@ -1,19 +1,47 @@
-<% if @posts.any? %>
-		<% @posts.each do |post| %>
-				<div class='post'>
-					<h2><%= post.title %></h2>
-					<p><%= post.description %></p>
-					<p><%= post.tags.name %></p>
-					<p>Posted by <%= post.user.email %></p>
-					<% if post.picture.present? %>
-						<p><%= image_tag post.picture.url(:thumb), class: 'uploaded-pic' %></p>
-					<% end %>
-				</div>
-		<% end %>
-<% else %>
-	No posts
+<% unless user_signed_in? %>
+
+	<div class="jumbotron">
+	  <div class="container">
+	    <h1>Welcome to PincerJam</h1>
+	    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+	    <p>
+	    	<%= link_to "Sign up »", new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+	    </p>
+	  </div>
+	</div>
+
 <% end %>
 
+<div class="container">
+	<% if @posts.any? %>
+		<div class="row">
+			<% @posts.each do |post| %>
+				<div class='col-sm-4'>
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title"><%= post.title %></h3>
+					  </div>
+					  <div class="panel-body">
+					    <% if post.picture.present? %>
+							<p><%= image_tag post.picture.url(:thumb), class: 'uploaded-pic' %></p>
+						<% end %>
+						<p><%= post.description %></p>
+						<p>
+							<% post.tags.each do |tag|%>
+								<%= link_to tag.name, '#' %>
+							<% end %>
+						</p>
+						<p></p>
+					  </div>
+					  <div class="panel-footer">Posted by <%= post.user.email %></div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	<% else %>
+		No posts
+	<% end %>
+	<%= link_to "Create post", new_post_path, class: 'btn btn-primary btn-lg' %>
+</div>
 
 
-<%= link_to "Create post", new_post_path %>

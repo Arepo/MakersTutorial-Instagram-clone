@@ -21,8 +21,8 @@ class Post < ActiveRecord::Base
 
 	def tag_names=(tag_names)
 		
-		tag_names.split(', ').each do |tag|
-			self.tags.create(name: tag_names)
+		tag_names.split(/[, ]+/).each do |tag|
+			tags << Tag.find_or_create_by(name: tag)
 		end
 	end
 
