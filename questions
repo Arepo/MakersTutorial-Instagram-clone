@@ -2,3 +2,8 @@ What are 'up' and 'down' in migrations?
 What are ActionView, ActionController etc? Are there other non-core rails components worth investigating in the near future?
 What is happening with '@import "bootstrap-sprockets";'?
 
+Is there a way to track eg username throughout, without needing to define @user for every action? Esp with Devise which doesn't give access to user controller
+
+Can you explain 0.3 - 0.2 - 0.1? 
+
+Should we be worried that every time we look at Ruby docs it talks about recent 'high' vulnerability reports
