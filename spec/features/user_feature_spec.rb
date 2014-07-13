@@ -5,10 +5,13 @@ describe 'registration/login' do
 	it 'lets you sign up' do
 		visit '/users/sign_up'
 		click_button 'Sign up'
-		fill_in 'Email', with: "bobbity@bob.ob"
-		fill_in "Password", with: '12345678'
-		fill_in "Password confirmation", with: '12345678'
-		click_button "Sign up"
+		
+ 		within('.new_user') do
+			fill_in 'Email', with: "bobbity@bob.ob"
+			fill_in "Password", with: '12345678'
+			fill_in "Password confirmation", with: '12345678'
+			click_button "Sign up"
+		end
 		expect(page).to have_content "signed up successfully"
 		expect(current_path).to eq '/'
 	end

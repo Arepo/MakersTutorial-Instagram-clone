@@ -18,6 +18,12 @@ describe Post do
 				post.tag_names = 'yolo'
 				expect(post.tags.length).to eq 1
 			end
+
+			it 'prepends a tag with #' do
+				post.tag_names = 'yolo'
+				tag = post.tags.last
+				expect(tag.name).to eq '#yolo'
+			end
 		end
 
 		describe 'multiple tags that don\'t already exist' do
@@ -28,14 +34,13 @@ describe Post do
 		end
 
 		describe 'tags that already exist' do
-				let!(:tag) { Tag.create(name: 'ponies') }
+				let!(:tag) { Tag.create(name: '#ponies') }
 
 			it 'reuses tags if they already exist' do
 				post.tag_names = 'ponies'
+				expect(post.tags).to include tag
 				expect(Tag.count).to eq 1
-				expect{ post.save! }.not_to raise_error
 			end
 		end
 	end
-
 end

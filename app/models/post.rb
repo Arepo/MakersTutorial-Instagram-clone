@@ -20,9 +20,10 @@ class Post < ActiveRecord::Base
 	end
 
 	def tag_names=(tag_names)
-		
+		return nil if tag_names == ""		
 		tag_names.split(/[, ]+/).each do |tag|
-			tags << Tag.find_or_create_by(name: tag)
+			formatted_name = '#' + tag.delete('')
+			tags << Tag.find_or_create_by(name: formatted_name)
 		end
 	end
 

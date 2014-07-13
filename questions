@@ -7,3 +7,5 @@ Is there a way to track eg username throughout, without needing to define @user 
 Can you explain 0.3 - 0.2 - 0.1? 
 
 Should we be worried that every time we look at Ruby docs it talks about recent 'high' vulnerability reports
+
+What's the simplest way to view all columns associated with a model?
