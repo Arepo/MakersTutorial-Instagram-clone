@@ -2,9 +2,8 @@ require 'rails_helper'
 
 describe 'admins' do 
 
-	xit 'cannot sign up' do
-		visit 'admins/sign_up'
-		expect(page).not_to have_content 'Sign up'
+	it 'cannot sign up' do
+		expect{visit 'admins/sign_up'}.to raise_error
 	end
 	
 end
