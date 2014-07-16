@@ -42,5 +42,21 @@ describe Post do
 				expect(Tag.count).to eq 1
 			end
 		end
+
+		describe 'multiple duplicate tags' do
+			it 'uses only unique tags' do
+				post.tag_names = 'yolo, swag, yolo'
+				expect(post.tags.count).to eq 2
+			end
+		end
+
+		describe 'multiple comma separated tags' do
+			context 'without spaces' do
+				it 'adds each tag to the post' do
+					post.tag_names = 'yolo,swag'
+					expect(post.tags.count).to eq 2
+				end
+			end
+		end
 	end
 end

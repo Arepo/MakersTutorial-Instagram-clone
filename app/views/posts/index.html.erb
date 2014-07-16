@@ -28,7 +28,7 @@
 						<p><%= post.description %></p>
 						<p>
 							<% post.tags.each do |tag|%>
-								<%= link_to tag.name, '#' %>
+								<%= link_to tag.name, tag_path(tag) %>
 							<% end %>
 						</p>
 						<p></p>

@@ -1,4 +1,8 @@
+Can you unignore the secrets file for example code so it's easier to pull and run?
 
+What's '<%= f.text_field :tag_names, data: {role: 'tagsinput'} %>'
+
+How did Sam know how to change the publishable_key line?
 
 What's the simplest way to view all columns associated with a model?
 

@@ -63,4 +63,16 @@ describe 'posts' do
 		end
 
 	end
+
+	it 'can filter posts by tag' do
+		bob = User.create(email: "bob@bob.com", password: "12345678", password_confirmation: "12345678")
+		bob.posts.create(title: 'Pic1', tag_names: 'yolo')
+		bob.posts.create(title: 'Pic2', tag_names: 'swag')
+
+		visit '/posts'
+		click_link '#yolo'
+		expect(page).to have_css 'h1', text: 'Posts tagged with #yolo'
+		expect(page).to have_content 'Pic1'
+		expect(page).not_to have_content 'Pic2'
+	end
 end
