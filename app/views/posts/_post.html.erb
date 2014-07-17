@@ -1,3 +1,5 @@
+<!-- takes 'post' variable from singularised model, when @posts is turned into an array of
+ post objects by 'in_groups_of method' -->
 <div class='col-sm-4'>
 	<div class="panel panel-default">
 	  <div class="panel-heading">
@@ -8,12 +10,15 @@
 			<p><%= image_tag post.picture.url(:thumb), class: 'uploaded-pic' %></p>
 		<% end %>
 		<p><%= post.description %></p>
+		<% unless post.address.blank? %>
+			<p><%= link_to 'Map', post_map_path(post), class: 'btn btn-success' %></p> 
+		<% end %>
 		<p>
 			<% post.tags.each do |tag|%>
 				<%= link_to tag.name, tag_path(tag) %>
 			<% end %>
 		</p>
-		<p></p>
+		<p><%= link_to "♥ #{post.likes.count}", post_likes_path(post), method: :post, class: 'btn btn-danger' %> </p>
 	  </div>
 	  <div class="panel-footer">Posted by <%= post.user.email %></div>
 	</div>

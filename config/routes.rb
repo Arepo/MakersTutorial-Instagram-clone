@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :admins
   resources :posts do
     resources :charges
+    resource :map
+    resources :likes
   end
   resources :orders
   resources :tags

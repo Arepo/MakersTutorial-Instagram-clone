@@ -2,7 +2,7 @@
 
 	<div class="jumbotron">
 	  <div class="container">
-	    <h1>Welcome to PincerJam</h1>
+	    <h1>Welcome to MinstrelSpam</h1>
 	    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
 	    <p>
 	    	<%= link_to "Sign up »", new_user_registration_path, class: 'btn btn-primary btn-lg' %>
@@ -14,11 +14,11 @@
 
 <div class="container">
 	<% if @posts.any? %>
-		<div class="row">
-			<% @posts.each do |post| %>
-				<%= render post %>
-			<% end %>
-		</div>
+		<% @posts.in_groups_of(3, false) do |post_triplet| %>
+			<div class='row'>
+				<%= render post_triplet %>
+			</div>
+		<% end %>
 	<% else %>
 		No posts
 	<% end %>

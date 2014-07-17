@@ -33,6 +33,7 @@ describe 'posts' do
 			visit "/posts/new"
 			fill_in "Title", with: "sexy"
 			fill_in "Description", with: "too sexy for my shirt"
+			fill_in "Address", with: "25 City Road"
 			click_button "Post"
 			expect(page).to have_content 'Posted by bob@bob.com'
 			expect(page).to have_content 'too sexy for my shirt'
