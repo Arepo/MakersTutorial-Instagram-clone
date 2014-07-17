@@ -4,4 +4,8 @@ class Tag < ActiveRecord::Base
 
 	validates :name, uniqueness: true
 
+	def to_param
+		name.delete '#'
+	end
+
 end

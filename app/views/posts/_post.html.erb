@@ -1,0 +1,20 @@
+<div class='col-sm-4'>
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title"><%= post.title %></h3>
+	  </div>
+	  <div class="panel-body">
+	    <% if post.picture.present? %>
+			<p><%= image_tag post.picture.url(:thumb), class: 'uploaded-pic' %></p>
+		<% end %>
+		<p><%= post.description %></p>
+		<p>
+			<% post.tags.each do |tag|%>
+				<%= link_to tag.name, tag_path(tag) %>
+			<% end %>
+		</p>
+		<p></p>
+	  </div>
+	  <div class="panel-footer">Posted by <%= post.user.email %></div>
+	</div>
+</div>
