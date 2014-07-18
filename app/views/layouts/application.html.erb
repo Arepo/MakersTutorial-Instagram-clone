@@ -7,26 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Instagram</title>
-	<%= stylesheet_link_tag    'application', media: 'all' %>
+        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+	 <%= stylesheet_link_tag    'application', media: 'all' %>
   	<%= javascript_include_tag 'application' %>
   	<%= csrf_meta_tags %>
-
   </head>
 
   <body>
-    <% unless user_signed_in? %> 
-      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">MinstrelSpam</a>
-          </div>
-          <div class="navbar-collapse collapse">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">MinstrelSpam</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <% unless user_signed_in? %> 
             <%= form_for(User.new, as: :user, url: session_path(:user), html: {class: "navbar-form navbar-right" }) do |f| %>
               <div class="form-group">
                 <%= f.email_field :email, placeholder: 'Email', class: 'form-control' %>
@@ -34,16 +35,13 @@
               <div class="form-group">
                 <%= f.password_field :password, placeholder: "Password", class: 'form-control' %>
               </div>
-            
             <%= f.check_box :remember_me %> <%= f.label :remember_me %>
-            
-
             <%= f.button "Sign in", class: "btn btn-success" %>
+            <% end %>
           <% end %>
-          </div><!--/.navbar-collapse -->
-        </div>
+        </div><!--/.navbar-collapse -->
       </div>
-    <% end %>
+    </div>
     <%= notice %>
     <%= alert %>
     
@@ -59,6 +57,8 @@
       </footer>
     </div> <!-- /container -->
  
+  
+
   </body>
 </html>
 
