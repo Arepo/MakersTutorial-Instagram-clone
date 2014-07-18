@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 //= require bootstrap-sprockets
 //= require bootstrap-tagsinput
+//= require websocket_rails/main
+//= require_tree .
