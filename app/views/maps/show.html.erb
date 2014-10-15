@@ -1,26 +1,26 @@
 <div class='container'>
 	<h1>Our awesome map will go here</h1>
-	<div id="map"></div>
+	<div id="map" data-id=<%=></div>
 	<script>
-		var map = new GMaps({
-			div: '#map',
-			lat: -12.043333,
-			lng: -77.028333
-		});
-		GMaps.geocode({
-  			address: '<%= @post.address %>',
-  			callback: function(results, status) {
-    			if (status == 'OK') {
-      				var latlng = results[0].geometry.location;
-      				map.setCenter(latlng.lat(), latlng.lng());
-      				map.addMarker({
-        				lat: latlng.lat(),
-        				lng: latlng.lng()
-      				});
-      			} else {
-      				alert('Could not find address');
-    			}
-  			}
-		});
+		$.get('/posts/1.json', function(post){
+			var map = new GMaps({
+				div: '#map',
+				lat: -12.043333,
+				lng: -77.028333
+			});
+			GMaps.geocode({
+	  			address: post.address,
+	  			callback: function(results, status) {
+	    			if (status == 'OK') {
+	      				var latlng = results[0].geometry.location;
+	      				map.setCenter(latlng.lat(), latlng.lng());
+	      				map.addMarker({
+	        				lat: latlng.lat(),
+	        				lng: latlng.lng()
+	      				});
+	    			}
+	  			}
+			});
+		})
 	</script>
 </div>
